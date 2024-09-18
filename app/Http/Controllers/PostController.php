@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        return Post::latest()->get();
+        return response()->json(Post::with('user')->latest()->get());
     }
 
     /**
@@ -38,7 +38,7 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        //
+        return $post->load('user');
     }
 
     /**
